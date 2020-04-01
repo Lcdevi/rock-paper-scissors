@@ -6,17 +6,43 @@
     <title>Document</title>
 </head>
 <body>
+    <h1>Play Rock Paper or Scissors through the console</h1>
+    <h2>How to play</h2>
+    <ul>
+        <li>Right click on your browser</li>
+        <li>Click inspect element</li>
+        <li>Look for console</li>
+        <li>Play by typing your input like rock,</li>
+    </ul>
     <script>
         const handChoices = ["rock","paper","scissors"];
         let playerScore = 0;
         let computerScore = 0;
         let round = 0;
         let result = "";
-        const player = "rock";
-        
+
+        function game(){
+            let player ="";
+            for(let i = 0; i <= 4; i++){
+                player = prompt("Please type your choice, Rock,Paper, or Scissors").toLowerCase();
+                while(!checkPlayerInput(player)){
+                    alert("Please stop breaking my game, Im just a girl, standing in front of a computer!!!");
+                    player = prompt("Please type your choice, Rock,Paper, or Scissors").toLowerCase();
+                }
+                playRound(player,computerPlay());
+                console.log(`Round: ${round}
+                             Scores Player: ${playerScore} - CPU: ${computerScore}
+                             Match: ${result}`
+                );
+            }
+        }
+
+
+        function checkPlayerInput(input){
+            return ((input === "") || (handChoices.includes(input)));
+        }
         function computerPlay(){
-            let computerInput = handChoices[Math.floor(Math.random() * handChoices.length)];
-            return computerInput;
+            return handChoices[Math.floor(Math.random() * handChoices.length)];;
         }
 
         function playRound(playerSelection, computerSelection){
@@ -29,14 +55,12 @@
                 result = `You lose!! ${computerSelection} beats ${playerSelection}`
                 ++computerScore;;
             }
-
+            round++;
             return result;
         }
+
         
 
-        function game(){
-            playRound(player,computerPlay);
-        }
     </script>
 </body>
 </html>
