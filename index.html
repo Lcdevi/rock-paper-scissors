@@ -50,7 +50,10 @@
         function playRound(playerSelection, computerSelection){
             if(playerSelection == computerSelection){
                 result = "Its a TIE!!";
-            } else if( (playerSelection == "rock" && computerSelection == "scissors") || (playerSelection == "paper" && computerSelection == "rock") || (playerSelection == "scissors" && computerSelection == "paper") ){
+            } else if( (playerSelection == "rock" && computerSelection == "scissors") || 
+                       (playerSelection == "paper" && computerSelection == "rock") || 
+                       (playerSelection == "scissors" && computerSelection == "paper") ){
+                           
                 result = `You win ${playerSelection} beats ${computerSelection}`;
                 ++playerScore;
             } else {
