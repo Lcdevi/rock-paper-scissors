@@ -12,41 +12,30 @@
         let computerScore = 0;
         let round = 0;
         let result = "";
-
+        const player = "rock";
         
         function computerPlay(){
-            return handChoices[Math.floor(Math.random() * handChoices.length)];
-            
-            
+            let computerInput = handChoices[Math.floor(Math.random() * handChoices.length)];
+            return computerInput;
         }
 
-        function roundPlay(playerSelection, computerSelection){
-
-            (playerSelection == computerSelection)?
-                result = "Its a Tie!!":
-                (playerSelection == "rock" && computerSelection == 2)? 
-                    ((++playerScore),(result = `You win ${playerSelection} beats ${handChoices[computerSelection]}`)):
-                    (playerSelection == "paper" && computerSelection == 0)?
-                        ((++playerScore),(result = `You win ${handChoices[playerSelection]} beats ${handChoices[computerSelection]}`)):
-                        (playerSelection == "scissors" && computerSelection == 1)? 
-                            ((++playerScore),(result = `You win ${playerSelection} beats ${handChoices[computerSelection]}`)):
-                            ((++computerScore),(result = `You lose!! ${handChoices[computerSelection]} beats ${playerSelection}`))
-            ++round;
-
-        return result;
-        }
-
-        function game(){
-            let player = "";
-
-            for(let i = 0; i <= 4; i++){
-                player = prompt("Please type your choice: Rock Paper or Scissors");
-                roundPlay(player,computerPlay);
-
-
-                console.log(roundPlay(player,computerPlay));
+        function playRound(playerSelection, computerSelection){
+            if(playerSelection == computerSelection){
+                result = "Its a TIE!!";
+            } else if( (playerSelection == "rock" && computerSelection == "scissors") || (playerSelection == "paper" && computerSelection == "rock") || (playerSelection == "scissors" && computerSelection == "paper") ){
+                result = `You win ${playerSelection} beats ${computerSelection}`;
+                ++playerScore;
+            } else {
+                result = `You lose!! ${computerSelection} beats ${playerSelection}`
+                ++computerScore;;
             }
 
+            return result;
+        }
+        
+
+        function game(){
+            playRound(player,computerPlay);
         }
     </script>
 </body>
