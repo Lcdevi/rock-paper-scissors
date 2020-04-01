@@ -35,12 +35,13 @@
                              Match: ${result}`
                 );
             }
+            reset();
         }
-
 
         function checkPlayerInput(input){
             return ((input === "") || (handChoices.includes(input)));
         }
+
         function computerPlay(){
             return handChoices[Math.floor(Math.random() * handChoices.length)];;
         }
@@ -59,7 +60,14 @@
             return result;
         }
 
+        function reset(){
+            playerScore = 0;
+            computerScore = 0;
+            round = 0;
+            result = "";
+        }
         
+        game();
 
     </script>
 </body>
