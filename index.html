@@ -3,76 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Rock-Paper-Scissors</title>
 </head>
 <body>
-    <h1>Play Rock Paper or Scissors through the console</h1>
-    <h2>How to play</h2>
-    <ul>
-        <li>Right click on your browser</li>
-        <li>Click inspect element</li>
-        <li>Look for console</li>
-        <li>Play by typing your input like rock</li>
-        <li>Refresh the browser if you want to play again. Enjoy!</li>
-    </ul>
-    <script>
-        const handChoices = ["rock","paper","scissors"];
-        let playerScore = 0;
-        let computerScore = 0;
-        let round = 0;
-        let result = "";
+    <div class="wrapper">
 
-        function game(){
-            let player ="";
-            for(let i = 0; i <= 4; i++){
-                player = prompt("Please type your choice, Rock,Paper, or Scissors").toLowerCase();
-                while(!checkPlayerInput(player)){
-                    alert("Please stop breaking my game, Im just a girl, standing in front of a computer!!!");
-                    player = prompt("Please type your choice, Rock,Paper, or Scissors").toLowerCase();
-                }
-                playRound(player,computerPlay());
-                console.log(`Round: ${round}
-                             Scores Player: ${playerScore} - CPU: ${computerScore}
-                             Match: ${result}`
-                );
-            }
-            reset();
-        }
+        <div class="title">
+            <h1>Rock Paper Scissors</h1>
+        </div>
 
-        function checkPlayerInput(input){
-            return ((input === "") || (handChoices.includes(input)));
-        }
+        <div class="gameStatus">
+            <h2>Status Game</h2>
+        </div>
 
-        function computerPlay(){
-            return handChoices[Math.floor(Math.random() * handChoices.length)];;
-        }
+        <div class="handCategories">
+            <img src="" alt="rock" id="0">
+            <img src="" alt="paper" id="1">
+            <img src="" alt="scissors" id="2">
+        </div>
 
-        function playRound(playerSelection, computerSelection){
-            if(playerSelection == computerSelection){
-                result = "Its a TIE!!";
-            } else if( (playerSelection == "rock" && computerSelection == "scissors") || 
-                       (playerSelection == "paper" && computerSelection == "rock") || 
-                       (playerSelection == "scissors" && computerSelection == "paper") ){
-                           
-                result = `You win ${playerSelection} beats ${computerSelection}`;
-                ++playerScore;
-            } else {
-                result = `You lose!! ${computerSelection} beats ${playerSelection}`
-                ++computerScore;;
-            }
-            round++;
-            return result;
-        }
+        <div class="restartGame">
+            <button id="restart">Restart</button>
+        </div>
 
-        function reset(){
-            playerScore = 0;
-            computerScore = 0;
-            round = 0;
-            result = "";
-        }
-        
-        game();
+        <div class="gameDetails">
+            <div class="score">
+                <span id="userName">Player</span>
+                <span id="user">0</span>
+                <span id="computer">0</span>
+                <span id="computerName">Computer</span>
+                
+            </div>
+        </div>
 
-    </script>
+        <div class="rounds">
+            <span id="round">0</span>
+        </div>
+    </div>
+
+
+    <script>main.js</script>
 </body>
 </html>
