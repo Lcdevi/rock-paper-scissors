@@ -4,19 +4,54 @@ let computerScore = 0;
 let rounds = 0;
 
 // Get player hand choice
-const handArr = document.querySelector('.handCategories');
-
-handArr.addEventListener('click',function (e) {
-    const player = e.target.className;
+const getHands = document.querySelector('.handCategories');
+getHands.addEventListener('click',function (e) {
+    const player = e.target.id;
     console.log(player);
-})
+});
+
+// Get computer choice by random index selection in the hand arr choices
+function computer() {
+    return Math.floor(Math.random() * handChoices.length);
+}
+
+// Compare the round against the player input and computer
+function playRound(playerInput, computerInput){
+    let result = "";
+    if(playerInput == computerInput){
+        result = "It's a TIE!!!";
+    } else if( (playerInput == 0 && computerInput == 2) || 
+               (playerInput == 1 && computerInput == 0) ||
+               (playerInput == 2 && computerInput == 1) ){
+      result = `You win !! ${handChoices[playerInput]} beats ${handChoices[computerInput]}`;
+      playerScore++;             
+    } else {
+      result = `You lose !! ${handChoices[computerInput]} beats ${handChoices[playerInput]}`;
+      computerScore++;
+    }
+    rounds++;
+}
 
 
 
 
 
-
-
+// function playRound(playerSelection, computerSelection){
+//     if(playerSelection == computerSelection){
+//         result = "Its a TIE!!";
+//     } else if( (playerSelection == "rock" && computerSelection == "scissors") || 
+//                (playerSelection == "paper" && computerSelection == "rock") || 
+//                (playerSelection == "scissors" && computerSelection == "paper") ){
+                   
+//         result = `You win ${playerSelection} beats ${computerSelection}`;
+//         ++playerScore;
+//     } else {
+//         result = `You lose!! ${computerSelection} beats ${playerSelection}`
+//         ++computerScore;;
+//     }
+//     round++;
+//     return result;
+// }
 
 
 
